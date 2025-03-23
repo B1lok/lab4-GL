@@ -2,7 +2,7 @@ pipeline {
     agent {
         docker {
             image 'conanio/gcc10'
-            args '-u root -w /workspace'
+            args "-u root -v ${WORKSPACE}:/workspace -w /workspace"
         }
     }
     environment {
