@@ -2,7 +2,7 @@ pipeline {
     agent {
         docker {
             image 'conanio/gcc10'
-            args "-u root"
+            args "-u root -v ${env.WORKSPACE}:/workspace -w /workspace"
         }
     }
     environment {
@@ -14,12 +14,13 @@ pipeline {
                 git credentialsId: 'gitlab-credentials-id',
                     url: 'https://github.com/B1lok/lab4-GL.git',
                     branch: 'main'
+                sh 'ls -la /workspace'
             }
         }
         stage('Build') {
             steps {
-                sh 'cmake -S . -B ${BUILD_DIR}'
-                sh 'cmake --build ${BUILD_DIR}'
+                sh 'cmake -S /workspace -B /workspace/${BUILD_DIR}'
+                sh 'cmake --build /workspace/${BUILD_DIR}'
             }
         }
         stage('Test') {
