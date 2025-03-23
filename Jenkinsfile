@@ -12,7 +12,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 git credentialsId: 'gitlab-credentials-id',
-                    url: 'https://gitlab.com/your_username/your_project.git',
+                    url: 'https://github.com/B1lok/lab4-GL.git',
                     branch: 'main'
             }
         }
