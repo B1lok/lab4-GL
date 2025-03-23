@@ -8,9 +8,6 @@ pipeline {
     environment {
         BUILD_DIR = 'build'
     }
-    options {
-        workspace('/workspace')
-    }
     stages {
         stage('Checkout') {
             steps {
