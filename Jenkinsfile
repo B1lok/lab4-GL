@@ -2,11 +2,14 @@ pipeline {
     agent {
         docker {
             image 'conanio/gcc10'
-            args "-u root -v ${WORKSPACE}:/workspace -w /workspace"
+            args "-u root"
         }
     }
     environment {
         BUILD_DIR = 'build'
+    }
+    options {
+        workspace('/workspace')
     }
     stages {
         stage('Checkout') {
