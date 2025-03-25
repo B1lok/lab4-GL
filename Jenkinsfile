@@ -14,12 +14,10 @@ pipeline {
                 git credentialsId: 'gitlab-credentials-id',
                     url: 'https://github.com/B1lok/lab4-GL.git',
                     branch: 'main'
-                sh 'ls -la ${env.WORKSPACE}'
             }
         }
         stage('Build') {
             steps {
-                sh 'ls -la /workspace'
                 sh 'cmake -S /workspace -B /workspace/${BUILD_DIR}'  
                 sh 'cmake --build /workspace/${BUILD_DIR}'
             }
