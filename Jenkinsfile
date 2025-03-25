@@ -18,8 +18,8 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh 'cmake -S /workspace -B /workspace/${BUILD_DIR}'  
-                sh 'cmake --build /workspace/${BUILD_DIR}'
+                sh 'cmake -S . -B ${BUILD_DIR}'  
+                sh 'cmake --build ${BUILD_DIR}'
             }
         }
         stage('Test') {
